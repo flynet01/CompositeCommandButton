@@ -2,25 +2,27 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:a4j="http://xmlns.jcp.org/jsf/core"
+                xmlns:a4j="http://richfaces.org/a4j"
                 xmlns:a4q="http://xmlns.jcp.org/jsf/composite/a4q"
                 template="/WEB-INF/templates/default.xhtml">
    <ui:define name="content">
       <h1>Demo of composite commandButton issue</h1>
 
       <h:form id="searchForm">
-         <h:panelGroup id="pg" layout="block">
-            <h:inputText id="searchNumberCodeSearch" value="#{searchModel.criteria.number}"
-                         required="false" >
-               <a4j:ajax event="change" render="panelGroup"
-                         execute="@this" />
-            </h:inputText>
-         </h:panelGroup>
-         <h:panelGroup layout="block">
-            <a4q:compositeButton id="btnSearch"
-                             value="Search" execute="@region"
-                             action="#{searchController.onSearch}" />
-         </h:panelGroup>
+         <a4j:region>
+            <h:panelGroup id="pg" layout="block">
+               <h:inputText id="searchNumberCodeSearch" value="#{searchModel.criteria.number}"
+                            required="false" >
+                  <a4j:ajax event="change" render="panelGroup"
+                            execute="@this" />
+               </h:inputText>
+            </h:panelGroup>
+            <h:panelGroup layout="block">
+               <a4q:compositeButton id="btnSearch"
+                                value="Search" execute="@region"
+                                action="#{searchController.onSearch}" />
+            </h:panelGroup>
+         </a4j:region>
       </h:form>
    </ui:define>
 </ui:composition>
